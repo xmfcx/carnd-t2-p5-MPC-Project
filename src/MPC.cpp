@@ -22,24 +22,27 @@ double dt = 0;
 const double Lf = 2.67;
 
 class FG_eval {
- public:
-  // Fitted polynomial coefficients
-  Eigen::VectorXd coeffs;
-  FG_eval(Eigen::VectorXd coeffs) { this->coeffs = coeffs; }
+public:
+    // Fitted polynomial coefficients
+    Eigen::VectorXd coeffs;
 
-  typedef CPPAD_TESTVECTOR(AD<double>) ADvector;
-  void operator()(ADvector& fg, const ADvector& vars) {
-    // TODO: implement MPC
-    // `fg` a vector of the cost constraints, `vars` is a vector of variable values (state & actuators)
-    // NOTE: You'll probably go back and forth between this function and
-    // the Solver function below.
-  }
+    FG_eval(Eigen::VectorXd coeffs) { this->coeffs = coeffs; }
+
+    typedef CPPAD_TESTVECTOR(AD<double>) ADvector;
+
+    void operator()(ADvector &fg, const ADvector &vars) {
+      // TODO: implement MPC
+      // `fg` a vector of the cost constraints, `vars` is a vector of variable values (state & actuators)
+      // NOTE: You'll probably go back and forth between this function and
+      // the Solver function below.
+    }
 };
 
 //
 // MPC class definition implementation.
 //
 MPC::MPC() {}
+
 MPC::~MPC() {}
 
 vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
