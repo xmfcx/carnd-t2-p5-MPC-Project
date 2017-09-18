@@ -36,10 +36,7 @@ public:
       // values (state & actuators)
       // NOTE: You'll probably go back and forth between this function and
       // the Solver function below.
-
-
     }
-
 };
 
 //
