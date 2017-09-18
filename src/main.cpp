@@ -45,7 +45,8 @@ double polyeval(Eigen::VectorXd coeffs, double x) {
 
 // Fit a polynomial.
 // Adapted from
-// https://github.com/JuliaMath/Polynomials.jl/blob/master/src/Polynomials.jl#L676-L716
+// https://github.com/JuliaMath/Polynomials.jl/blob/master/src/Polyn
+// omials.jl#L676-L716
 Eigen::VectorXd polyfit(Eigen::VectorXd xvals, Eigen::VectorXd yvals,
                         int order) {
   assert(xvals.size() == yvals.size());
@@ -75,7 +76,8 @@ int main() {
 
   h.onMessage([&mpc](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
                      uWS::OpCode opCode) {
-      // "42" at the start of the message means there's a websocket message event.
+      // "42" at the start of the message means there's a
+      // websocket message event.
       // The 4 signifies a websocket message
       // The 2 signifies a websocket event
       string sdata = string(data).substr(0, length);
@@ -104,11 +106,11 @@ int main() {
             double throttle_value;
 
 
-
-
             json msgJson;
-            // NOTE: Remember to divide by deg2rad(25) before you send the steering value back.
-            // Otherwise the values will be in between [-deg2rad(25), deg2rad(25] instead of [-1, 1].
+            // NOTE: Remember to divide by deg2rad(25) before you send the
+            // steering value back.
+            // Otherwise the values will be in between
+            // [-deg2rad(25), deg2rad(25] instead of [-1, 1].
             msgJson["steering_angle"] = steer_value;
             msgJson["throttle"] = throttle_value;
 
@@ -116,7 +118,8 @@ int main() {
             vector<double> mpc_x_vals;
             vector<double> mpc_y_vals;
 
-            //.. add (x,y) points to list here, points are in reference to the vehicle's coordinate system
+            //.. add (x,y) points to list here, points are in reference to the
+            //vehicle's coordinate system
             // the points in the simulator are connected by a Green line
 
             msgJson["mpc_x"] = mpc_x_vals;
@@ -126,7 +129,8 @@ int main() {
             vector<double> next_x_vals;
             vector<double> next_y_vals;
 
-            //.. add (x,y) points to list here, points are in reference to the vehicle's coordinate system
+            //.. add (x,y) points to list here, points are in reference to the
+            //vehicle's coordinate system
             // the points in the simulator are connected by a Yellow line
 
             msgJson["next_x"] = next_x_vals;

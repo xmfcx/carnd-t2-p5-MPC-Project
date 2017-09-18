@@ -6,8 +6,8 @@
 using CppAD::AD;
 
 // TODO: Set the timestep length and duration
-size_t N = 0;
-double dt = 0;
+size_t N = 10;
+double dt = 0.1;
 
 // This value assumes the model presented in the classroom is used.
 //
@@ -32,10 +32,14 @@ public:
 
     void operator()(ADvector &fg, const ADvector &vars) {
       // TODO: implement MPC
-      // `fg` a vector of the cost constraints, `vars` is a vector of variable values (state & actuators)
+      // `fg` a vector of the cost constraints, `vars` is a vector of variable
+      // values (state & actuators)
       // NOTE: You'll probably go back and forth between this function and
       // the Solver function below.
+
+
     }
+
 };
 
 //
@@ -78,6 +82,7 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
     constraints_lowerbound[i] = 0;
     constraints_upperbound[i] = 0;
   }
+
 
   // object that computes objective and constraints
   FG_eval fg_eval(coeffs);
