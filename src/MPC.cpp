@@ -203,8 +203,8 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
   // The upper and lower limits of delta are set to -25 and 25
   // degrees (values in radians).
   for (size_t i = delta_start; i < delta_start + delay_indices; i++) {
-    // Because of latency, we are unable to change actuator values during
-    // the first 100ms, so use the current values during that window.
+    // Initialize with current value.
+    // Because we get stuff with 100ms delay.
     vars_lowerbound[i] = steering_angle;
     vars_upperbound[i] = steering_angle;
   }
@@ -216,8 +216,8 @@ vector<double> MPC::Solve(Eigen::VectorXd state, Eigen::VectorXd coeffs) {
 
   // Acceleration/decceleration upper and lower limits.
   for (size_t i = a_start; i < a_start + delay_indices; i++) {
-    // Because of latency, we are unable to change actuator values during
-    // the first 100ms, so use the current values during that window.
+    // Initialize with current value.
+    // Because we get stuff with 100ms delay.
     vars_lowerbound[i] = throttle;
     vars_upperbound[i] = throttle;
   }
